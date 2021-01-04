@@ -1,0 +1,89 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Bungee Outline", cursive;
+}
+
+body {
+  height: 100vh;
+  background-image: linear-gradient(to top left, #366082 0%, #79799b 100%);
+}
+.field {
+  width: 20vh;
+  height: 20vh;
+  border: 2px solid rgb(34, 34, 34);
+  background-color: rgba(255, 255, 255, 0.404);
+  box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.25);
+  float: left;
+}
+
+.row-board {
+  float: bottom;
+}
+
+.board {
+  margin: 50px auto 10px;
+  max-width: 61vh;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 25px;
+  font-size: 500%;
+  color: rgb(34, 34, 34);
+}
+
+.hidden {
+  display: none;
+}
+
+.oimg {
+  background-image: url(grunge-circle-frame-1.png);
+  background-size: 80%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.ximg {
+  background-image: url(grunge-x-1.png);
+  background-size: 80%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@media (orientation: portrait) {
+  .field {
+    height: 15vw;
+    width: 15vw;
+  }
+}
+
+.btn {
+  display: block;
+  padding: 0.3em 1.2em;
+  margin: 50px auto;
+  border: 0.16em solid rgba(255, 255, 255, 0);
+  border-radius: 2em;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  color: rgb(34, 34, 34);
+  text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
+  text-align: center;
+  transition: border-color 0.2s;
+}
+.btn:hover {
+  border-color: rgba(255, 255, 255, 1);
+}
+
+.alert {
+  font-size: 300%;
+  text-align: center;
+}
+
+.trophy img {
+  margin: 30px auto;
+  width: 25%;
+  display: block;
+}
