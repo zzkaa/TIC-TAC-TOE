@@ -57,6 +57,12 @@ h1 {
     height: 15vw;
     width: 15vw;
   }
+  .board {
+    max-width: 45vw;
+  }
+  .btn {
+    font-size: 150%;
+  }
 }
 
 .btn {
