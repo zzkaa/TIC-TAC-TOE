@@ -2,107 +2,33 @@ let activePlayer = 0;
 
 const fields = document.querySelectorAll(".field");
 
-function checkWinnerO() {
-  if (
-    document.getElementById("0").classList.contains("oimg") &&
-    document.getElementById("1").classList.contains("oimg") &&
-    document.getElementById("2").classList.contains("oimg")
-  ) {
-    return true;
-  } else if (
-    document.getElementById("3").classList.contains("oimg") &&
-    document.getElementById("4").classList.contains("oimg") &&
-    document.getElementById("5").classList.contains("oimg")
-  ) {
-    return true;
-  } else if (
-    document.getElementById("6").classList.contains("oimg") &&
-    document.getElementById("7").classList.contains("oimg") &&
-    document.getElementById("8").classList.contains("oimg")
-  )
-    return true;
-  else if (
-    document.getElementById("0").classList.contains("oimg") &&
-    document.getElementById("3").classList.contains("oimg") &&
-    document.getElementById("6").classList.contains("oimg")
-  )
-    return true;
-  else if (
-    document.getElementById("1").classList.contains("oimg") &&
-    document.getElementById("4").classList.contains("oimg") &&
-    document.getElementById("7").classList.contains("oimg")
-  )
-    return true;
-  else if (
-    document.getElementById("2").classList.contains("oimg") &&
-    document.getElementById("5").classList.contains("oimg") &&
-    document.getElementById("8").classList.contains("oimg")
-  )
-    return true;
-  else if (
-    document.getElementById("0").classList.contains("oimg") &&
-    document.getElementById("4").classList.contains("oimg") &&
-    document.getElementById("8").classList.contains("oimg")
-  )
-    return true;
-  else if (
-    document.getElementById("2").classList.contains("oimg") &&
-    document.getElementById("4").classList.contains("oimg") &&
-    document.getElementById("6").classList.contains("oimg")
-  )
-    return true;
-}
+const winning = [
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8],
+  [0, 4, 8],
+  [2, 4, 6],
+];
 
-function checkWinnerX() {
-  if (
-    document.getElementById("0").classList.contains("ximg") &&
-    document.getElementById("1").classList.contains("ximg") &&
-    document.getElementById("2").classList.contains("ximg")
-  ) {
-    return true;
-  } else if (
-    document.getElementById("3").classList.contains("ximg") &&
-    document.getElementById("4").classList.contains("ximg") &&
-    document.getElementById("5").classList.contains("ximg")
-  ) {
-    return true;
-  } else if (
-    document.getElementById("6").classList.contains("ximg") &&
-    document.getElementById("7").classList.contains("ximg") &&
-    document.getElementById("8").classList.contains("ximg")
-  )
-    return true;
-  else if (
-    document.getElementById("0").classList.contains("ximg") &&
-    document.getElementById("3").classList.contains("ximg") &&
-    document.getElementById("6").classList.contains("ximg")
-  )
-    return true;
-  else if (
-    document.getElementById("1").classList.contains("ximg") &&
-    document.getElementById("4").classList.contains("ximg") &&
-    document.getElementById("7").classList.contains("ximg")
-  )
-    return true;
-  else if (
-    document.getElementById("2").classList.contains("ximg") &&
-    document.getElementById("5").classList.contains("ximg") &&
-    document.getElementById("8").classList.contains("ximg")
-  )
-    return true;
-  else if (
-    document.getElementById("0").classList.contains("ximg") &&
-    document.getElementById("4").classList.contains("ximg") &&
-    document.getElementById("8").classList.contains("ximg")
-  )
-    return true;
-  else if (
-    document.getElementById("2").classList.contains("ximg") &&
-    document.getElementById("4").classList.contains("ximg") &&
-    document.getElementById("6").classList.contains("ximg")
-  )
-    return true;
-}
+const checkWinner = function (player) {
+  return (
+    winning.find(function (positions) {
+      for (const position of positions) {
+        if (
+          !document
+            .getElementById(`${position}`)
+            .classList.contains(`${player}img`)
+        ) {
+          return false;
+        }
+      }
+      return true;
+    }) !== undefined
+  );
+};
 
 for (let i = 0; i < fields.length; i++) {
   fields[i].addEventListener("click", function () {
@@ -113,7 +39,7 @@ for (let i = 0; i < fields.length; i++) {
     } else {
       if (activePlayer === 0) {
         fields[i].classList.add("oimg");
-        if (checkWinnerO()) {
+        if (checkWinner("o")) {
           document.querySelector(".alert").textContent = "VICTORY!";
           document.querySelector(".board").classList.add("hidden");
           document.querySelector(".trophy").classList.remove("hidden");
@@ -122,7 +48,7 @@ for (let i = 0; i < fields.length; i++) {
         }
       } else if (activePlayer === 1) {
         fields[i].classList.add("ximg");
-        if (checkWinnerX()) {
+        if (checkWinner("x")) {
           document.querySelector(".alert").textContent = "VICTORY!";
           document.querySelector(".board").classList.add("hidden");
           document.querySelector(".trophy").classList.remove("hidden");
